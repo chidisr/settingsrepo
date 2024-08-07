@@ -1,0 +1,20 @@
+Refer to this URL - https://superuser.com/questions/1533291/how-do-i-change-the-dns-settings-for-wsl2
+
+Turn off automatic generation of /etc/resolv.conf
+
+Modify (or create) /etc/wsl.conf with the following content
+
+[network]
+generateResolvConf = false
+
+Create a custom /etc/resolv.conf
+If resolv.conf is soft linked to another file, remove the link with
+
+rm resolv.conf
+Create a new resolv.conf with the following content
+
+nameserver 8.8.8.8 or local DNS
+
+Restart the WSL2 Virtual Machine
+Exit all of your Linux prompts and run the following Powershell command
+wsl --shutdown OR wsl --terminate <<Linux distro>>
